@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ResourceListWebpackPlugin = require('./ResourceListWebpackPlugin');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
@@ -80,6 +81,7 @@ module.exports = merge(baseWebpackConfig, {
         from: path.join(__dirname, '../public/static'),
         to: path.join(__dirname, '../dist/static'),
       }
-    ])
+    ]),
+    new ResourceListWebpackPlugin()
   ]
 })
