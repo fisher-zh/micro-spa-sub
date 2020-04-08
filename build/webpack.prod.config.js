@@ -82,6 +82,8 @@ module.exports = merge(baseWebpackConfig, {
         to: path.join(__dirname, '../dist/static'),
       }
     ]),
-    new ResourceListWebpackPlugin()
+    new ResourceListWebpackPlugin({
+      name: 'sub-app'
+    })
   ]
 })

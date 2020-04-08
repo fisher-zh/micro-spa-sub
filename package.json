@@ -1,13 +1,12 @@
 {
-  "name": "micro-fe",
+  "name": "sub-app",
   "version": "2.0.0",
   "description": "a project base on webpack",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack-dev-server --config build/webpack.dev.config.js",
-    "build": "node build/build.js",
-    "create-sub-app": "node build/create-sub-app.js"
+    "build": "node build/build.js"
   },
   "repository": {
     "type": "git",
