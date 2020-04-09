@@ -1,1 +1,0 @@
-window["sub-app"] = {"css":["/css/styles.css"],"js":["/main.3af11980ed1583ad4a91.js"]}

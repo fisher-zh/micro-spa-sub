@@ -29,7 +29,9 @@ class ResourceListWebpackPlugin {
     }
     const name = this.options.name;
     let fileString = 'window["' + name + '"] = ' + JSON.stringify(obj);
-    const result = fs.writeFileSync(path.resolve(__dirname, '../resource/module.js'), fileString);
+    // 创建dist文件夹
+    fs.mkdirSync(path.resolve(__dirname, '../dist'));
+    const result = fs.writeFileSync(path.resolve(__dirname, `../dist/module.${new Date().getTime()}.js`), fileString);
     if (result) {
       console.log('文件写入失败');
       console.log(result);
