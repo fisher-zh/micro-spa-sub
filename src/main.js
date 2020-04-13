@@ -5,7 +5,7 @@ import store from './store';
 import './assets/main.scss';
 
 new Vue({
-  el: '#sub-app1',
+  el: '#sub-app-template',
   router,
   store,
   render: h => h(App)
