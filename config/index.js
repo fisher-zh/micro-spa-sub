@@ -12,7 +12,7 @@ const config = {
     publicPath: '/'
   },
   build: {
-    publicPath: '/'
+    publicPath: '/sub-app/sub-app-template/'
   }
 }
 
