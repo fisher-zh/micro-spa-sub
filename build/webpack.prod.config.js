@@ -82,7 +82,7 @@ module.exports = merge(baseWebpackConfig, {
       }
     ]),
     new ResourceListWebpackPlugin({
-      name: 'sub-app'
+      name: 'sub-app-template'
     })
   ]
 })

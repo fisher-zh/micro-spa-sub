@@ -1,5 +1,5 @@
 {
-  "name": "sub-app",
+  "name": "sub-app-template",
   "version": "2.0.0",
   "description": "a project base on webpack",
   "main": "index.js",

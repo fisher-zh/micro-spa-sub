@@ -6,7 +6,7 @@ import test from '../view/test.vue';
 Vue.use(VueRouter)
 
 // 由于hash模式不支持 base选项，故通过添加baseUrl前缀的方式
-const baseUrl = '/sub-app-1';
+const baseUrl = '/sub-app-template';
 const routes = [
   {
     path: '/',
