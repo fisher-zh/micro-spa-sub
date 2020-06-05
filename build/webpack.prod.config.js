@@ -1,14 +1,19 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 const baseWebpackConfig = require('./webpack.base.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ResourceListWebpackPlugin = require('./ResourceListWebpackPlugin');
+const config = require('../config');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
+  output: {
+    publicPath: config.build.publicPath
+  },
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -68,6 +73,11 @@ module.exports = merge(baseWebpackConfig, {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('prodiction')
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../public/index.html'),
       inject: true
@@ -82,7 +92,7 @@ module.exports = merge(baseWebpackConfig, {
       }
     ]),
     new ResourceListWebpackPlugin({
-      name: 'sub-app-template'
+      name: 'warning-management'
     })
   ]
 })

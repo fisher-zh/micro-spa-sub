@@ -7,10 +7,7 @@ module.exports = {
   entry: path.join(__dirname, '../src/main.js'),
   output: {
     filename: 'js/[name].[hash].js',
-    path: path.join(__dirname, '../dist'),
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.publicPath
-      : config.dev.publicPath
+    path: path.join(__dirname, '../dist')
   },
   module: {
     rules: [

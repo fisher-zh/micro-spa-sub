@@ -10,6 +10,9 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
+  output: {
+    publicPath: config.dev.publicPath
+  },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
     compress: true,
@@ -19,7 +22,10 @@ module.exports = merge(baseWebpackConfig, {
     host: config.dev.host || 'localhost',
     port: config.dev.port || 8080,
     proxy: config.dev.proxy || {},
-    stats: 'minimal'
+    stats: 'minimal',
+    historyApiFallback: {
+      index: config.dev.publicPath + 'index.html'
+    }
   },
   module: {
     rules: [
@@ -34,6 +40,11 @@ module.exports = merge(baseWebpackConfig, {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../public/index.html'),
       inject: true
