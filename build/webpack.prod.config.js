@@ -92,7 +92,7 @@ module.exports = merge(baseWebpackConfig, {
       }
     ]),
     new ResourceListWebpackPlugin({
-      name: 'warning-management'
+      name: 'sub-app-template'
     })
   ]
 })
