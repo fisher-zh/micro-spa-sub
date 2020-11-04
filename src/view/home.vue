@@ -12,7 +12,7 @@ export default {
       this.$router.push({
         path: '/sub-app-1/test'
       })
-    }
+    },
   }
 }
 </script>
