@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/test',
     component: test
-  },
+  }
 ]
 
 // 添加baseUrl
