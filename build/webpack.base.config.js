@@ -54,7 +54,8 @@ module.exports = {
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ['You application is running here http://localhost:' + config.dev.port]
+        messages: ['You application is running here http://localhost:' + config.dev.port],
+        clearConsole: true
       },
     }),
     new VueLoaderPlugin(),
