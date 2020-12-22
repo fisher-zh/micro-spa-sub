@@ -1,7 +1,6 @@
 const path = require('path');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const config = require('../config');
 
 module.exports = {
@@ -13,8 +12,31 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: path.join(__dirname, "../src"),
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/transform-runtime']
+          }
+        }
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader'
+      },
+      {
+        test: /\.(vue|(j|t)sx?)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          // cache: true,
+          eslintPath: require.resolve('eslint'),
+          extensions: ['js', 'vue', 'jsx'],
+          formatter: require('eslint-friendly-formatter'),
+        },
       },
       {
         test: /\.svg$/,
@@ -58,14 +80,6 @@ module.exports = {
         clearConsole: true
       },
     }),
-    new VueLoaderPlugin(),
-    new ESLintPlugin({
-      context: path.join(__dirname, '../src'),
-      eslintPath: require.resolve('eslint'),
-      extensions: ['js', 'vue'],
-      formatter: require('eslint-friendly-formatter'),
-      useEslintrc: true,
-      ignore: true
-    })
+    new VueLoaderPlugin()
   ]
 }

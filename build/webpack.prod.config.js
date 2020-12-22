@@ -51,18 +51,6 @@ module.exports = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: path.join(__dirname, "../src"),
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/transform-runtime']
-          }
-        }
-      },
-      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
